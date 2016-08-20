@@ -1,4 +1,14 @@
 ﻿(function () {
+    $("#click-me").on("click", function () {
+        myHub.server.getServerDateTime()
+           .done(function (data) {
+               writeToPage(data);
+           })
+           .fail(function (e) {
+               writeToPage(e);
+           });
+    })
+
     var myHub = $.connection.myHub;
     $.connection.hub.start()
         .done(function () {
