@@ -9,15 +9,15 @@
            });
     })
 
-    var myHub = $.connection.myHub;
+    var chat = $.connection.chat;
     $.connection.hub.start()
         .done(function () {
             writeToPage("It worked!");
-            myHub.server.announce("Connected!");
+            chat.server.announceToEverybody("Connected!");
         })
         .fail(function () { writeToPage("Error connecting to SignalR"); });
 
-    myHub.client.announce = function (message) {
+    chat.client.announce = function (message) {
         writeToPage(message);
     }
 
